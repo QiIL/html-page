@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .parent {
+        float: left;
+        position: relative;
+        left: 50%;
+    }
+    .child {
+        position: relative;
+        left: -50%;
+    }
+    .center {
+        text-align: center;
+    }
+</style>
+<body>
+    <div><div>我是不居中的</div></div>
+    <div class="parent"><div class="child">我需要居中</div></div>
+    <div class="center"><img src="why_position_work.png" alt=""></div>
+</body>
+</html>

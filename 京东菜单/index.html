@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            position: relative;
+            width: 200px;
+            left: 50px;
+            top: 50px;
+        }
+
+        ul {
+            padding: 15px 0;
+            margin: 9;
+            list-style: none;
+            background: #6c6669;
+            color: #ffffff;
+            border-right-width: 0;
+        }
+
+        li {
+            display: block;
+            height: 30px;
+            line-height: 30px;
+            padding-left: 12px;
+            cursor: pointer;
+            font-size: 14px;
+            position: relative;
+        }
+
+        li.active {
+            background: #999395;
+        }
+
+        li span:hover{
+            color: #c81623;
+        }
+
+        .second {
+            width: 600px;
+            background: #999999;
+            position: absolute;
+            left: 200px;
+            top: 0;
+        }
+
+        .second a {
+            text-decoration: none;
+        }
+
+        .second dl {
+            margin: 10px 15px;
+        }
+
+        .second dl dt {
+            float: left;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .second dl dt a {
+            color: black;
+        }
+
+        .second dl dt a:hover {
+            color: #c81623
+        }
+
+        .second dl dt i {
+            font-size: 12px;
+            width: 10px;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .second dl dd {
+            font-size: 12px;
+        }
+
+        .second dl dd a {
+            color: #666;
+            margin: 0px 5px;
+        }
+
+        .second dl dd a:hover {
+            color: #c81623
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <ul>
+            <li id="a"><span>家用电器</span></li>
+            <li id="b"><span>手机</span>/<span>运营商</span>/<span>数码</span></li>
+            <li id="b"><span>电脑</span>/<span>办公</span></li>
+            <li id="b"><span>家居</span>/<span>家居</span>/<span>家装</span>/<span>厨具</span></li>
+            <li id="b"><span>美妆</span>/<span>个护清洁</span>/<span>宠物</span></li>
+            <li id="b"><span>女鞋</span>/<span>箱包</span>/<span>钟表</span>/<span>珠宝</span></li>
+            <li id="b"><span>男鞋</span>/<span>运动</span>/<span>户外</span></li>
+            <li id="b"><span>房产</span>/<span>汽车</span>/<span>汽车用品</span></li>
+            <li id="b"><span>母婴</span>/<span>玩具乐器</span></li>
+            <li id="b"><span>食品</span>/<span>酒类</span>/<span>生鲜</span>/<span>特产</span></li>
+            <li id="b"><span>艺术</span>/<span>礼品鲜花</span>/<span>农资绿植</span></li>
+            <li id="b"><span>医药保健</span>/<span>计生情趣</span></li>
+            <li id="b"><span>图书</span>/<span>文娱</span>/<span>教育</span>/<span>电子书</span></li>
+            <li id="b"><span>机票</span>/<span>酒店</span>/<span>旅游</span>/<span>生活</span></li>
+            <li id="b"><span>理财</span>/<span>众筹</span>/<span>白条</span>/<span>保险</span></li>
+            <li id="b"><span>安装</span>/<span>维修</span>/<span>清洗</span>/<span>二手</span></li>
+            <li id="b"><span>工业品</span></li>
+        </ul>
+        <div class="second">
+            <dl>
+                <dt>
+                    <a href="#">电视<i>&gt;</i></a>
+                </dt>
+                <dd>
+                    <a href="#">超薄电视</a>
+                    <a href="#">全面屏电视</a>
+                    <a href="#">智能电视</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>
+                    <a href="#">空调<i>></i></a>
+                </dt>
+                <dd>
+                    <a href="#">美的空调</a>
+                    <a href="#">格力空调</a>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</body>
+</html>

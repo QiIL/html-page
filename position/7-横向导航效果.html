@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>横向导航栏</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .parent {
+            width: 800px;
+            height: 500px;
+        }
+
+        .nav {
+            width: 120px;
+            height: 50px;
+            background: #333;
+            position: relative;
+            left: 440px;
+            top: 0px;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .nav .tit {
+            width: 120px;
+            height: 50px;
+            text-align: center;
+            font-size: 16pt;
+            color: #ffffff;
+            border-bottom: 1px solid white;
+        }
+
+        .nav ul {
+            width: 120px;
+            height: 50px;
+            display: none;
+            background: #423;
+            text-align: center;
+            font-size: 16pt;
+            color: whitesmoke;
+        }
+
+        .nav:hover ul {display: inline-block;}
+
+        .nav ul li {
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="nav">
+            <div class="tit">Qill的导航栏</div>
+            <ul>
+                <li>二级栏目</li>
+            </ul>
+        </div>
+        <div class="nav">
+            <div class="tit">Qill的导航栏</div>
+            <ul>
+                <li>二级栏目</li>
+            </ul>
+        </div>
+        <div class="nav">
+            <div class="tit">Qill的导航栏</div>
+            <ul>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

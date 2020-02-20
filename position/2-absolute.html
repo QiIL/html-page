@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        
+        .bro{
+            width: 100px;
+            height: 100px;
+            background: blue;
+        }
+
+        .test{
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            /*如果不给出位置属性，则回根据默认的块进行定位*/
+            /*左上角，右为正，下位正*/
+            left: 50px;
+            top: 50px;
+
+            /*右上角，左为正，下位正*/
+            /*
+            right: 50px;
+            top: 5opx;
+            */
+        }
+    </style>
+</head>
+<body>
+    <div class="bro"></div>
+    <!-- 只根据窗口进行位置定位 -->
+    <div class="test"></div>
+</body>
+</html>

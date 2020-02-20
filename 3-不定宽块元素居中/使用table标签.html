@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        border: 1px solid black;
+        margin: 5px 0;
+        /* 不指定宽度，所以margin: 0 auto不会生效*/
+    }
+    table {
+        margin: 0 auto;
+        /* table标签就不一样了 */
+    }
+</style>
+<body>
+    <div>我是不居中的</div>
+    <table>
+        <tbody>
+            <tr>
+                <td>
+                    <div>我是要居中的</div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
