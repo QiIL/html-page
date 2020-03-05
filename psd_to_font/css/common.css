@@ -46,17 +46,10 @@
     background-color: gray;
 }
 
-.menu {
-    width: 800px;
-    height: 50px;
-    margin: 0px auto;
-    background: gray;
-}
-
 .footer {
     width: 1500px;
     height: 318px;
-    margin: 0px auto;
+    margin: 200px auto 0 auto;
     background-color: #3b3b3b;
 }
 
@@ -89,4 +82,242 @@
 .footer .footer-contant a {
     color: #fff;
     font-weight: bold;
+}
+
+.banner {
+    width: 1500px;
+    height: 570px;
+    position: relative;
+    background-color: #3b3b3b;
+}
+
+.banner-background {
+    width: 1500px;
+    height: 570px;
+}
+
+.banner-text {
+    position: absolute;
+    top: 209px;
+    left: 50%;
+    margin-left: -388px;
+}
+
+.banner-text .banner-text-logo {
+    width: 776px;
+    height: 117px;
+    background: url("../img/banner-text-logo.png");
+}
+
+.banner-text .banner-text-info {
+    margin-top: 17px;
+    color: #fff;
+    text-align: center;
+}
+
+.banner-text .banner-text-info .line {
+    display: inline-block;
+    width: 40px;
+    border-top: 1px solid #fff;
+    vertical-align: middle;
+}
+
+.banner-text-info .banner-text-txt {
+    margin: 0 26px;
+}
+
+.menu {
+    position: relative;
+    border-top: 4px solid #F34949;
+    left: 50%;
+    margin-left: -750px;
+    width: 1500px;
+    height: 596px;
+}
+
+.menu-header {
+    position: absolute;
+    left: 50%;
+    margin-left: -78px;
+    width: 156px;
+    height: 71px;
+    background-color: #F34949;
+    text-align: center;
+    color: #fff;
+    line-height: 65px;
+}
+
+.menu-header:after{
+    position: absolute;
+    content: '';
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 78px solid transparent;
+    border-right: 78px solid transparent;
+    border-bottom: 10px solid #fff;
+}
+
+.menu-content {
+    position: absolute;
+    top: 150px;
+    left: 50%;
+    margin-left: -550px;
+    color: #555;
+    overflow: hidden;
+}
+
+.menu-content ul {
+    width: 1160px;
+}
+
+.menu-content .menu-item {
+    float: left;
+    width: 520px;
+    margin-right: 60px;
+    margin-bottom: 56px;
+}
+
+.menu-content .menu-item .title, .menu-content .menu-item .line{
+    float: left;
+}
+
+.menu-content .menu-item .price {
+    float: right;
+}
+
+.menu-content .menu-item .title {
+    width: 230px;
+}
+
+.menu-content .menu-item .title p {
+    color: #B7B7B7;
+    font-size: 12px;
+}
+
+.menu-content .line {
+    position: absolute;
+    margin-left: 230px;
+    margin-top: 10px;
+    width: 192px;
+    border-top: 1px solid #E3E1E1;
+}
+
+.menu-button {
+    position: absolute;
+    left: 50%;
+    margin-left: -77px;
+    margin-top: 562px;
+    width: 134px;
+    height: 34px;
+    background-color: #fff;
+}
+
+.menu-button-text {
+    margin-left: 16px;
+    margin-right: 13px;
+    color: #b7b7b7;
+}
+
+.menu-button-line {
+    color: #b7b7b7;
+}
+
+.feature-dishes {
+    margin: 200px auto 0 400px;
+    width: 1160px;
+    height: 362px;
+}
+
+.feature-dishes h3 {
+    font-size: 20px;
+    float: left;
+    margin-right: 20px;
+}
+
+.feature-dishes .line {
+    display: inline-block;
+    margin-top: 10px;
+    border-top: 1px solid #E3E1E1;
+    width: 192px;
+}
+
+.feature-dishes .point {
+    float: right;
+    margin-right: 60px;
+}
+
+.feature-dishes .btn {
+    display: inline-block;
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #E3E1E1;
+}
+.feature-dishes .active {
+    background-color: #3b3b3b;
+}
+
+.feature-food-group {
+    margin-top: 80px;
+}
+
+.feature-dishes .feature-food-group ul{
+    width: 1160px;
+}
+
+.feature-dishes .feature-food-group .food-index {
+    float: left;
+    margin-right: 60px;
+    width: 230px; 
+}
+
+.feature-dishes .feature-food-group .food-index .food-discribe {
+    margin-top: 30px;
+    color: #555;
+}
+
+.feature-dishes .feature-food-group .food-index .food-discribe span {
+    float: right;
+}
+
+.feature-dishes .feature-food-group .food-index .star {
+    display: inline-block;
+    font-size: 0;
+    width: 12px;
+    height: 13px;
+    margin-right: 5px;
+    background-image: url("../img/food-star.png");
+}
+
+.feature-dishes .feature-food-group .food-index .nostar {
+    background-position: 0 -13px;
+}
+
+.feature-dishes-l {
+    height: 528px;
+}
+
+.index-pic {
+    height: 385px;
+    overflow: hidden;
+}
+
+.pic-col {
+    float: left;
+}
+
+.index-pic .pic-col-m{
+    width: 353px;
+}
+
+.index-pic .pic-col-s{
+    width: 287px;
+}
+
+.index-pic .pic-col-l{
+    width: 460px;
 }
