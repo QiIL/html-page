@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    width: 300px;
+    height: 200px;
+    margin: 0 auto;
+    
+}
+
+img {
+    position: absolute;
+    left: 50%;
+    margin-top: 50px;
+    margin-left: -230px;
+    width: 460px;
+    height: 381px;
+    transform-origin: center 500px;
+    transition: transform .7s ease;
+    cursor: pointer;
+}
+
+.container img:first-child {
+    transform: rotate(5deg)
+}
+.container img:last-child {
+    transform: rotate(-5deg)
+}
+
+.container:hover img:first-child {
+    transform: rotate(25deg)
+}
+
+.container:hover img:last-child {
+    transform: rotate(-25deg)
+}
+
+</style>
+<body>
+    <div class="container">
+        <img src="./food-pic-l.png" alt="">
+        <img src="./food-pic-l.png" alt="">
+        <img src="./food-pic-l.png" alt="">
+    </div>
+</body>
+</html>

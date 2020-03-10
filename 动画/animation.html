@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .point {
+        position: relative;
+        left: 50%;
+        margin-left: -20px;
+        margin-top: 50px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: green;
+        animation: fade-out 1.0s infinite ease-in-out;
+    }
+    @keyframes fade-out {
+        from {
+            transform: scale(0.0);
+        }
+        to {
+            transform: scale(1.0);
+            opacity: 0;
+        }
+    }
+</style>
+<body>
+    <div class="point"></div>
+</body>
+</html>

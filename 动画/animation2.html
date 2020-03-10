@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        margin: 0;
+        padding: 0;
+    }
+    .spinder {
+        margin: 0 auto;
+        width: 80px;
+        height: 50px;
+    }
+    .line {
+        display: inline-block;
+        background-color: green;
+        width: 6px;
+        height: 50px;
+        margin-right: 1px;
+        animation: strchdely 1.2s infinite ease-in-out;
+    }
+    .line2 {
+        animation-delay: -1.1s;
+    }
+    .line3 {
+        animation-delay: -1.0s;
+    }
+    .line4 {
+        animation-delay: -0.9s;
+    }
+    .line5 {
+        animation-delay: -0.8s;
+    }
+
+    @keyframes strchdely {
+        0%, 40%, 100% {
+            transform : scaleY(0.4) 
+        }
+        20% {
+            transform: scaleY(1.0)
+        }
+    }
+</style>
+<body>
+    <div class="spinder">
+        <div class="line line1"></div>
+        <div class="line line2"></div>
+        <div class="line line3"></div>
+        <div class="line line4"></div>
+        <div class="line line5"></div>
+    </div>
+</body>
+</html>
