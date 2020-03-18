@@ -4,6 +4,12 @@ class Game {
     nextDivs = []
     gameDiv
     nextDiv
+    timeSpan
+    timer
+    time
+    scoreSpan
+    score
+    gameOverDiv
     // 游戏矩阵
     gameData = [
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -144,6 +150,7 @@ class Game {
 
     // 清除行
     clear() {
+        let clearLine = 0
         for (let i = this.gameData.length - 1; i > 0; i--) {
             let needClean = true
             for (let j = 0; j < this.gameData[i].length; j++) {
@@ -162,12 +169,17 @@ class Game {
                     this.gameData[0][k] = 0
                 }
                 i++
+                clearLine++
             }
+        }
+        if (clearLine > 0) {
+            this.addScore(10 * Math.pow(2, clearLine - 1))
         }
     }
     
     // 下移
     down() {
+        console.log('do down')
         if (this.canDown()) {
             this.clearData()
             this.cur.origin.x = this.cur.origin.x + 1
@@ -229,6 +241,12 @@ class Game {
             }
         }
         this.refresh(this.gameData, this.gameDivs)
+        this.addScore(4)
+    }
+
+    addScore(Add) {
+        this.score = this.score + Add,
+        this.scoreSpan.innerHTML = this.score
     }
 
     // 把下一个拉出来
@@ -250,10 +268,48 @@ class Game {
         return false
     }
 
+    // 加时间
+    addTime() {
+        this.time = this.time + 1
+        this.timeSpan.innerHTML = this.time
+    }
+
+    // 停止
+    stop(Bool) {
+        clearInterval(this.timer)
+        this.timer = null
+        if (Bool) {
+            this.gameOverDiv.innerHTML = '666'
+        } else {
+            this.gameOverDiv.innerHTML = '菜'
+        }
+    }
+
+    // 添加行
+    addTailLine(lines) {
+        for (let i = 0; i < this.gameData.length - lines.length; i++) {
+            this.gameData[i] = this.gameData[i+lines.length]
+        }
+        for (let i = 0; i < lines.length; i++) {
+            this.gameData[this.gameData.length - lines.length + i] = lines[i]
+        }
+        this.cur.origin.x = this.cur.origin.x - lines.length
+        if (this.cur.origin.x < 0) {
+            this.cur.origin.x = 0
+        }
+        // console.log(this.gameData)
+        this.refresh(this.gameData, this.gameDivs)
+    }
+
     // 初始化
     init (doms) {
         this.gameDiv = doms.gameDiv
         this.nextDiv = doms.nextDiv
+        this.gameOverDiv = doms.gameOverDiv
+        this.time = 0
+        this.score = 0
+        this.timeSpan = doms.timeSpan
+        this.scoreSpan = doms.scoreSpan
         this.cur = SquareFactory.makeSquare(0, 0)
         this.next = SquareFactory.makeSquare(0, 0)
         this.setData()
@@ -261,6 +317,10 @@ class Game {
         this.initDivs(this.nextDiv, this.next.data, this.nextDivs)
         this.refresh(this.gameData, this.gameDivs)
         this.refresh(this.next.data, this.nextDivs)
+        this.scoreSpan.innerHTML = this.score
+        this.timer = setInterval(() => {
+            this.addTime()
+        }, 1000);
     }
 
 }

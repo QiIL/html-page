@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>Chat room</div>
+    <input id="sendTxt" type="text">
+    <button id="sendBtn">发送</button>
+</body>
+<script>
+    let websocket = new WebSocket("ws://localhost:3000")
+        websocket.onopen = function() {
+            document.getElementById("sendBtn").onclick = function() {
+            let txt = document.getElementById("sendTxt").value;
+            if (txt) {
+                websocket.send(txt)
+            }
+        }
+    }
+    websocket.onclose = function () {
+        console.log("connect close")
+    }
+    websocket.onmessage = function (e) {
+        let rdata = JSON.parse(e.data)
+        console.log(e.data)
+        let div = document.createElement("div")
+        if (rdata.type === 'enter') {
+            div.style.color = 'blue'
+        } else if (rdata.type === 'left') {
+            div.style.color = 'red'
+        }
+        div.innerHTML = rdata.data
+        document.body.appendChild(div)
+    }
+    
+</script>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>Chat room</div>
+    <input id="sendTxt" type="text">
+    <button id="sendBtn">发送</button>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js"></script>
+<script>
+    let socket = io("ws://localhost:3000")
+    document.getElementById("sendBtn").onclick = function() {
+        let txt = document.getElementById("sendTxt").value;
+        if (txt) {
+            socket.emit('message', txt)
+        }
+    }
+
+    function showMessage (str, type) {
+        let div = document.createElement("div")
+        if (type === 'enter') {
+            div.style.color = 'blue'
+        } else if (type === 'disconnect') {
+            div.style.color = 'red'
+        }
+        div.innerHTML = str
+        document.body.appendChild(div)
+    }
+    
+    socket.on('enter', (data) => {
+        showMessage(data, 'enter')
+    })
+    socket.on('message', (data) => {
+        showMessage(data, 'message')
+    })
+    socket.on('disconnect', (data) => {
+        showMessage(data, 'disconnect')
+    })
+    
+</script>
+</html>

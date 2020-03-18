@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        cursor: pointer;
+    }
+    .background {
+        position: absolute;
+        background: url("./food-pic-l.png");
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+    }
+    .mask {
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background-color: grey;
+        opacity: 0;
+    }
+    .info {
+        position:absolute;
+        width: 300px;
+        height: 300px;
+        line-height: 300px;
+        font-size: 25px;
+        color: #fff;
+        text-align: center;
+        opacity: 0;
+    }
+    .border {
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        border-left: 10px solid hotpink;
+        border-top: 10px solid hotpink;
+        border-right: 10px solid orangered;
+        border-bottom: 10px solid orangered;
+        border-radius: 50%;
+        box-sizing: border-box;
+    }
+
+    .container:hover .mask{
+        opacity: .5;
+        transition: opacity 1s ease-in;
+    }
+    
+    .container:hover .info{
+        opacity: 1;
+        transition: opacity 1s ease-in;
+    }
+    
+    .container:hover .border{
+        transform: rotate(180deg);
+        transition: transform 1s ease-in-out;
+    }
+
+</style>
+<body>
+    <div class="container">
+        <div class="background">
+            <div class="mask"></div>
+            <div class="info">丢你楼木</div>
+        </div>
+        <div class="border"></div>
+    </div>
+</body>
+</html>
