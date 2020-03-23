@@ -74,11 +74,11 @@ class Local {
     // 开始游戏
     start () {
         let doms = {
-            gameDiv: document.getElementById('game'),
-            nextDiv: document.getElementById('next'),
-            timeSpan: document.getElementById('time'),
-            scoreSpan: document.getElementById('score'),
-            gameOverDiv: document.getElementById('game-over')
+            gameDiv: document.getElementById('local-game'),
+            nextDiv: document.getElementById('local-next'),
+            timeSpan: document.getElementById('local-time'),
+            scoreSpan: document.getElementById('local-score'),
+            gameOverDiv: document.getElementById('local-game-over')
         }
         this.game = new Game()
         this.game.init(doms)

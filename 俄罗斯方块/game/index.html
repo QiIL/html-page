@@ -7,12 +7,38 @@
     <title>俄罗斯方块</title>
 </head>
 <body>
-    <div id="game"></div>
-    <div id="next"></div>
-    <div id="info">
-        <div>以用时: <span id="time">0</span>s</div>
-        <div>以得分: <span id="score"></span></div>
-        <div id="game-over"></div>
+    <div>使用方向键和空格键进行操作，上->旋转，右->右移，下->下移，左->左移，空格->下坠</div>
+    <div id="local-area" class="square">
+        <div class="title">我的游戏区</div>
+        <div id="local-game" class="game"></div>
+        <div id="local-next" class="next"></div>
+        <div id="local-info" class="info">
+            <div>以用时: <span id="local-time">0</span>s</div>
+            <div>以得分: <span id="local-score"></span></div>
+            <div id="local-game-over"></div>
+        </div>
+    </div>
+    <div id="remote-area" class="square">
+        <div class="title">别人的游戏区</div>
+        <div id="remote-game" class="game"></div>
+        <div id="remote-next" class="next"></div>
+        <div id="remote-info" class="info">
+            <div>以用时: <span id="remote-time">0</span>s</div>
+            <div>以得分: <span id="remote-score"></span></div>
+            <div id="remote-game-over"></div> <br>  
+            <button id="rotate">rotate</button><br>
+            <button id="left">left</button><br>
+            <button id="right">right</button><br>
+            <button id="down">down</button><br>
+            <button id="fall">fall</button><br>
+            <button id="performNext">performNext</button><br>
+            <button id="fixed">fixed</button><br>
+            <button id="clear">clear</button><br>
+            <button id="addTime">addTime</button><br>
+            <button id="addScore">addScore</button><br>
+            <button id="gameOver">gameOver</button><br>
+            <button id="addTailLine">addTailLine</button><br>
+        </div>
     </div>
 </body>
 <script src="./js/square.js"></script>
