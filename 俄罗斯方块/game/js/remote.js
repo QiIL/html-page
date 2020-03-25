@@ -1,114 +1,51 @@
 class Remote {
     // 游戏对象
     game;
-    timer = null;
-    timer2 = null;
+    socket
     // 绑定键盘时间
-    bindKeyEvent (game) {
-        document.getElementById('rotate').onclick = function() {
-            game.rotate()
-        }
-        document.getElementById('right').onclick = function() {
-            game.right()
-        }
-        document.getElementById('down').onclick = function() {
-            game.down()
-        }
-        document.getElementById('left').onclick = function() {
-            game.left()
-        }
-
-        document.getElementById('fall').onclick = function() {
-            game.fall()
-        }
-        document.getElementById('performNext').onclick = function() {
-            game.performNext()
-        }
-        document.getElementById('fixed').onclick = function() {
-            game.fixed()
-        }
-        document.getElementById('clear').onclick = function() {
-            game.clear()
-        }
-        document.getElementById('gameOver').onclick = function() {
-            document.getElementById('rotate').onclick = null
-            document.getElementById('right').onclick = null
-            document.getElementById('down').onclick = null
-            document.getElementById('left').onclick = null
-            document.getElementById('fall').onclick = null
-            document.getElementById('performNext').onclick = null
-            document.getElementById('fixed').onclick = null
-            document.getElementById('clear').onclick = null
-            document.getElementById('gameOver').onclick = null
-            document.getElementById('addTime').onclick = null
-            document.getElementById('addTailLine').onclick = null
-            document.getElementById('addScore').onclick = null
-            game.stop(true)
-        }
-        document.getElementById('addTime').onclick = function() {
-            game.addTime()
-        }
-        document.getElementById('addTailLine').onclick = function() {
-            game.addTailLine([[0,1,0,1,1,1,1,1,0,1]])
-        }
-        document.getElementById('addScore').onclick = function() {
-            game.addScore(10)
-        }
+    constructor (socket) {
+        this.socket = socket
     }
-
-    // unBindKeyEvent () {
-        
-    // }
-
-    move() {
-        if (!this.game.down()) {
+    bindKeyEvent () {
+        this.socket.on('init', data => {
+            this.start(data.curIndex, data.curRotatePos, data.nextIndex, data.nextRotatePos)
+        })
+        this.socket.on('left', data => {
+            this.game.left()
+        })
+        this.socket.on('down', data => {
+            this.game.down()
+        })
+        this.socket.on('rotate', data => {
+            this.game.rotate()
+        })
+        this.socket.on('right', data => {
+            this.game.right()
+        })
+        this.socket.on('fall', data => {
+            this.game.fall()
+        })
+        this.socket.on('fixed', data => {
             this.game.fixed()
+        })
+        this.socket.on('clear', data => {
             this.game.clear()
-            if (this.game.gameOver()) {
-                this.stop()
-            } else {
-                this.game.performNext()
-            }
-        }
-    }
-
-    makeRandomLine(num) {
-        let lines = []
-        for (let i = 0; i < num; i++) {
-            let line = []
-            let zeroCount = 0
-            let oneCount = 0
-            for (let j = 0; j < 10; j++) {
-                if (zeroCount > 3) {
-                    line.push(1)
-                } else if (oneCount === 0 && j === 9) {
-                    line.push(0)
-                } else {
-                    let Tag = Math.floor(Math.random() * 2)
-                    line.push(Tag)
-                    if (Tag === 1) {
-                        oneCount ++
-                    } else {
-                        zeroCount ++
-                    }
-                }
-            }
-            lines.push(line)
-        }
-        return lines
-    }
-
-    maybeAddLine() {
-        let num = Math.floor(Math.random() * 3)
-        if (num < 3) {
-            let lines = this.makeRandomLine(num)
+        })
+        this.socket.on('stopOk', data => {
+            this.game.gameOver()
+            this.game.stop(true)
+        })
+        this.socket.on('addLineDone', lines => {
             this.game.addTailLine(lines)
-        }
-        console.log('do add')
+        })
+        this.socket.on('performNext', data => {
+            let next = SquareFactory.makeSquare(data.nextIndex, data.nextRotatePos)
+            this.game.performNext(next)
+        })
     }
 
     // 开始游戏
-    start () {
+    start (curIndex, curRotatePos, nextIndex, nextRotatePos) {
         let doms = {
             gameDiv: document.getElementById('remote-game'),
             nextDiv: document.getElementById('remote-next'),
@@ -117,24 +54,14 @@ class Remote {
             gameOverDiv: document.getElementById('remote-game-over')
         }
         this.game = new Game()
-        this.game.init(doms)
-        this.bindKeyEvent(this.game)
-        // this.timer = setInterval(() => {
-        //     this.move()
-        // }, 200);
-        // this.timer2 = setInterval(() => {
-        //     this.maybeAddLine()
-        // }, 1000);
+        let cur = SquareFactory.makeSquare(curIndex, curRotatePos)
+        let next = SquareFactory.makeSquare(nextIndex, nextRotatePos)
+        this.game.init(doms, cur, next)
     }
 
-    stop() {
-        if (this.timer) {
-            clearInterval(this.timer)
-            this.timer = null
-            // clearInterval(this.timer2)
-            // this.timer2 = null
-            this.unBindKeyEvent()
-            this.game.stop(false)
-        }
+    stop(flag) {
+        this.game.gameOver()
+        this.game.stop(flag)
+        this.socket.emit('stopOk')
     }
 }

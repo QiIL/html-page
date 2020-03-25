@@ -114,7 +114,6 @@ class Game {
         let test = {}
         test.x = this.cur.origin.x
         test.y = this.cur.origin.y - 1
-        console.log(test)
         return this.moveCheck(test, this.cur.data)
     }
     // 检测数据是否合法
@@ -122,7 +121,6 @@ class Game {
         let test = {}
         test.x = this.cur.origin.x
         test.y = this.cur.origin.y + 1
-        console.log(test)
         return this.moveCheck(test, this.cur.data)
     }
 
@@ -175,11 +173,11 @@ class Game {
         if (clearLine > 0) {
             this.addScore(10 * Math.pow(2, clearLine - 1))
         }
+        return clearLine
     }
     
     // 下移
     down() {
-        console.log('do down')
         if (this.canDown()) {
             this.clearData()
             this.cur.origin.x = this.cur.origin.x + 1
@@ -250,9 +248,9 @@ class Game {
     }
 
     // 把下一个拉出来
-    performNext() {
+    performNext(Next) {
         this.cur = this.next
-        this.next = SquareFactory.makeSquare(0, 0)
+        this.next = Next
         this.setData()
         this.refresh(this.gameData, this.gameDivs)
         this.refresh(this.next.data, this.nextDivs)
@@ -275,13 +273,17 @@ class Game {
     }
 
     // 停止
-    stop(Bool) {
+    stop(BoolOrString) {
         clearInterval(this.timer)
         this.timer = null
-        if (Bool) {
-            this.gameOverDiv.innerHTML = '666'
+        if (BoolOrString === true || BoolOrString === false) {
+            if (BoolOrString) {
+                this.gameOverDiv.innerHTML = '666'
+            } else {
+                this.gameOverDiv.innerHTML = '菜'
+            }
         } else {
-            this.gameOverDiv.innerHTML = '菜'
+            this.gameOverDiv.innerHTML = BoolOrString
         }
     }
 
@@ -297,12 +299,11 @@ class Game {
         if (this.cur.origin.x < 0) {
             this.cur.origin.x = 0
         }
-        // console.log(this.gameData)
         this.refresh(this.gameData, this.gameDivs)
     }
 
     // 初始化
-    init (doms) {
+    init (doms, Cur, Next) {
         this.gameDiv = doms.gameDiv
         this.nextDiv = doms.nextDiv
         this.gameOverDiv = doms.gameOverDiv
@@ -310,8 +311,8 @@ class Game {
         this.score = 0
         this.timeSpan = doms.timeSpan
         this.scoreSpan = doms.scoreSpan
-        this.cur = SquareFactory.makeSquare(0, 0)
-        this.next = SquareFactory.makeSquare(0, 0)
+        this.cur = Cur
+        this.next = Next
         this.setData()
         this.initDivs(this.gameDiv, this.gameData, this.gameDivs)
         this.initDivs(this.nextDiv, this.next.data, this.nextDivs)
